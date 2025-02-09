@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini tutorial de reStructuredText | Python Ecuador</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="es" href="../../rss.xml">
+<link rel="canonical" href="https://python.ec/guias/rst/">
+<link rel="icon" href="../../favicon.ico" sizes="16x16">
+<link rel="icon" href="../../icon_128x128.ico" sizes="128x128">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><!-- Custom css --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../assets/css/custom.css" type="text/css" media="all">
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5b3ba8da96094f18ab12fd5608de0b55"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Ir al contenido principal</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="../../">
+
+            <span id="blog-title">Python Ecuador</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../nuestra-comunidad/" class="nav-link">Comunidad</a>
+                </li>
+<li class="nav-item">
+<a href="../../archive.html" class="nav-link">Posts</a>
+                </li>
+<li class="nav-item">
+<a href="../../coc/" class="nav-link">Código de Conducta</a>
+                </li>
+<li class="nav-item">
+<a href="../../quiero-ayudar/" class="nav-link">Quiero ayudar</a>
+                </li>
+<li class="nav-item">
+<a href="../" class="nav-link">Guías</a>
+                </li>
+<li class="nav-item">
+<a href="../../eventos/" class="nav-link">Eventos</a>
+                </li>
+<li class="nav-item">
+<a href="../../becas/" class="nav-link">Becas</a>
+                </li>
+<li class="nav-item">
+<a href="../../sponsors/" class="nav-link">Sponsors</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+  <div class="container pt mb">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-8">
+  <h1>
+    <a href=".">Mini tutorial de reStructuredText</a>
+  </h1>
+
+  <p>Esta guía es una breve introducción a los conceptos y la sintaxis de reStructuredText (reST).</p>
+<p>reStructuredText es un lenguaje de marcado de texto, que es legible y simple de usar,
+pero lo suficientemente potente para un uso no trivial.
+Es útil para la documentación de programas en línea (como los docstrings de Python),
+para crear rápidamente páginas web simples y para documentos independientes.</p>
+<aside class="admonition note"><p class="admonition-title">Nota</p>
+<p>Para seguir este tutorial te puedes ayudar de alguna herramienta para editar y previsualizar el resultado de la sintaxis RST.
+Lo puedes hacer online en <a class="reference external" href="https://livesphinx.herokuapp.com/">este sitio</a>.</p>
+</aside><nav class="contents" id="contenidos" role="doc-toc"><p class="topic-title"><a class="reference internal" href="#top">Contenidos</a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#parrafo" id="toc-entry-1">Párrafo</a></p></li>
+<li><p><a class="reference internal" href="#formato-de-texto-en-linea" id="toc-entry-2">Formato de texto en línea</a></p></li>
+<li><p><a class="reference internal" href="#bloques-de-texto" id="toc-entry-3">Bloques de texto</a></p></li>
+<li><p><a class="reference internal" href="#links-o-enlaces" id="toc-entry-4">Links o enlaces</a></p></li>
+<li>
+<p><a class="reference internal" href="#listas" id="toc-entry-5">Listas</a></p>
+<ul>
+<li><p><a class="reference internal" href="#listas-desordenadas" id="toc-entry-6">Listas desordenadas</a></p></li>
+<li><p><a class="reference internal" href="#lista-ordenada" id="toc-entry-7">Lista ordenada</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#titulos-o-encabezados" id="toc-entry-8">Títulos o encabezados</a></p></li>
+<li><p><a class="reference internal" href="#bloques-de-codigo" id="toc-entry-9">Bloques de código</a></p></li>
+<li><p><a class="reference internal" href="#imagenes" id="toc-entry-10">Imágenes</a></p></li>
+<li><p><a class="reference internal" href="#tablas" id="toc-entry-11">Tablas</a></p></li>
+</ul></nav><section id="parrafo"><h2><a class="toc-backref" href="#toc-entry-1" role="doc-backlink">Párrafo</a></h2>
+<p>El párrafo es el bloque más básico en un documento reST.
+Los párrafos son simplemente trozos de texto separados por una o más líneas en blanco.
+Al igual que en Python, la sangría es significativa en reST,
+por lo que todas las líneas del mismo párrafo deben alinearse a la izquierda con el mismo nivel de sangría.</p>
+<div class="code"><pre class="code rst"><a id="rest_code_dffaa6a4906e4ae3821a8f301e77c49c-1" name="rest_code_dffaa6a4906e4ae3821a8f301e77c49c-1" href="#rest_code_dffaa6a4906e4ae3821a8f301e77c49c-1"></a>Este es un párrafo.
+</pre></div>
+<p><strong>Resultado</strong></p>
+<p>Este es un párrafo</p>
+<div class="code"><pre class="code rst"><a id="rest_code_d82b48c6f2d74b65b807830c2de4e468-1" name="rest_code_d82b48c6f2d74b65b807830c2de4e468-1" href="#rest_code_d82b48c6f2d74b65b807830c2de4e468-1"></a>Los párrafos se alinean al
+<a id="rest_code_d82b48c6f2d74b65b807830c2de4e468-2" name="rest_code_d82b48c6f2d74b65b807830c2de4e468-2" href="#rest_code_d82b48c6f2d74b65b807830c2de4e468-2"></a>borde izquierdo y
+<a id="rest_code_d82b48c6f2d74b65b807830c2de4e468-3" name="rest_code_d82b48c6f2d74b65b807830c2de4e468-3" href="#rest_code_d82b48c6f2d74b65b807830c2de4e468-3"></a>normalmente están separados
+<a id="rest_code_d82b48c6f2d74b65b807830c2de4e468-4" name="rest_code_d82b48c6f2d74b65b807830c2de4e468-4" href="#rest_code_d82b48c6f2d74b65b807830c2de4e468-4"></a>por líneas en blanco.
+</pre></div>
+<p><strong>Resultado</strong></p>
+<p>Los párrafos se alinean al
+borde izquierdo y
+normalmente están separados
+por líneas en blanco.</p>
+</section><section id="formato-de-texto-en-linea"><h2><a class="toc-backref" href="#toc-entry-2" role="doc-backlink">Formato de texto en línea</a></h2>
+<p>El formato de texto en línea permite que las palabras y frases dentro del texto tengan estilos de caracteres
+(como cursiva y negrita) y funcionalidad (como hipervínculos).</p>
+<table>
+<thead><tr>
+<th class="head"><p>Texto Plano</p></th>
+<th class="head"><p>Resultado</p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p><code class="docutils literal">*itálica*</code></p></td>
+<td><p><em>itálica</em></p></td>
+</tr>
+<tr>
+<td><p><code class="docutils literal">**negrita**</code></p></td>
+<td><p><strong>negrita</strong></p></td>
+</tr>
+<tr>
+<td><p><code class="docutils literal">`link <span class="pre">&lt;https://python.ec&gt;`__</span></code></p></td>
+<td><p><a class="reference external" href="https://python.ec">link</a></p></td>
+</tr>
+<tr>
+<td><p><code class="docutils literal"><span class="pre">https://python.ec</span></code></p></td>
+<td><p><a class="reference external" href="https://python.ec">https://python.ec</a></p></td>
+</tr>
+</tbody>
+</table></section><section id="bloques-de-texto"><h2><a class="toc-backref" href="#toc-entry-3" role="doc-backlink">Bloques de texto</a></h2>
+<p>Es posible mostrar bloques de texto.
+Para esto se debe poner <code class="docutils literal">::</code> al final del párrafo para obtener algo como esto:</p>
+<div class="code"><pre class="code rst"><a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-1" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-1" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-1"></a>Cualquier sangría o tabulación es parte del bloque preformateado.
+<a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-2" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-2" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-2"></a>Incluso
+<a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-3" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-3" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-3"></a>
+<a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-4" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-4" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-4"></a>los
+<a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-5" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-5" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-5"></a>saltos
+<a id="rest_code_3110a9777a7d4105bb1d72d301fb78d2-6" name="rest_code_3110a9777a7d4105bb1d72d301fb78d2-6" href="#rest_code_3110a9777a7d4105bb1d72d301fb78d2-6"></a>de línea     y      espacios.
+</pre></div>
+</section><section id="links-o-enlaces"><h2><a class="toc-backref" href="#toc-entry-4" role="doc-backlink">Links o enlaces</a></h2>
+<p>Si vas a usar un link en varias partes de un documento,
+puedes definir el URL por separado:</p>
+<div class="code"><pre class="code rst"><a id="rest_code_5157a116cfc4414185f3f3b3ba19905a-1" name="rest_code_5157a116cfc4414185f3f3b3ba19905a-1" href="#rest_code_5157a116cfc4414185f3f3b3ba19905a-1"></a>Línea donde aparece el link_ definido por separado.
+<a id="rest_code_5157a116cfc4414185f3f3b3ba19905a-2" name="rest_code_5157a116cfc4414185f3f3b3ba19905a-2" href="#rest_code_5157a116cfc4414185f3f3b3ba19905a-2"></a>
+<a id="rest_code_5157a116cfc4414185f3f3b3ba19905a-3" name="rest_code_5157a116cfc4414185f3f3b3ba19905a-3" href="#rest_code_5157a116cfc4414185f3f3b3ba19905a-3"></a><span class="p">..</span> <span class="nt">_link:</span> https://url-link/defino/por/separadp
+</pre></div>
+<p>Rst nos da la facilidad de crear enlaces internos hacia el un documento.
+Para hacer esto podemos basarnos en el nombre de los encabezados que estén dentro de un archivo o documento,
+como por ejemplo este enlace <a class="reference external" href="#parrafo">Párrafo</a> me posiciona al inicio de este documento:</p>
+<div class="code"><pre class="code rst"><a id="rest_code_fa0fd8ca97d8401faf8a806594a1bc06-1" name="rest_code_fa0fd8ca97d8401faf8a806594a1bc06-1" href="#rest_code_fa0fd8ca97d8401faf8a806594a1bc06-1"></a>por ejemplo este enlace <span class="na">:ref:</span><span class="nv">`Párrafo &lt;parrafo&gt;`</span> me posiciona al inicio de este documento:
+</pre></div>
+</section><section id="listas"><h2><a class="toc-backref" href="#toc-entry-5" role="doc-backlink">Listas</a></h2>
+<section id="listas-desordenadas"><h3><a class="toc-backref" href="#toc-entry-6" role="doc-backlink">Listas desordenadas</a></h3>
+<div class="code"><pre class="code rst"><a id="rest_code_5ecbb2d5b0d0474e83cd622116be7559-1" name="rest_code_5ecbb2d5b0d0474e83cd622116be7559-1" href="#rest_code_5ecbb2d5b0d0474e83cd622116be7559-1"></a><span class="m">-</span> Elemento 1
+<a id="rest_code_5ecbb2d5b0d0474e83cd622116be7559-2" name="rest_code_5ecbb2d5b0d0474e83cd622116be7559-2" href="#rest_code_5ecbb2d5b0d0474e83cd622116be7559-2"></a><span class="m">-</span> Elemento 2
+<a id="rest_code_5ecbb2d5b0d0474e83cd622116be7559-3" name="rest_code_5ecbb2d5b0d0474e83cd622116be7559-3" href="#rest_code_5ecbb2d5b0d0474e83cd622116be7559-3"></a>    <span class="m">*</span> Elemento 3
+<a id="rest_code_5ecbb2d5b0d0474e83cd622116be7559-4" name="rest_code_5ecbb2d5b0d0474e83cd622116be7559-4" href="#rest_code_5ecbb2d5b0d0474e83cd622116be7559-4"></a>        <span class="m">+</span> Elemento 4
+</pre></div>
+<p><strong>Resultado</strong></p>
+<ul class="simple">
+<li><p>Elemento 1</p></li>
+<li><dl class="simple">
+<dt>Elemento 2</dt>
+<dd><ul>
+<li><dl class="simple">
+<dt>Elemento 3</dt>
+<dd><ul>
+<li><p>Elemento 4</p></li>
+</ul></dd>
+</dl></li>
+</ul></dd>
+</dl></li>
+</ul></section><section id="lista-ordenada"><h3><a class="toc-backref" href="#toc-entry-7" role="doc-backlink">Lista ordenada</a></h3>
+<div class="code"><pre class="code rst"><a id="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-1" name="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-1" href="#rest_code_60c8c15e75fe489b9b047ba8c2fd8497-1"></a><span class="m">#.</span> Elemento 1
+<a id="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-2" name="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-2" href="#rest_code_60c8c15e75fe489b9b047ba8c2fd8497-2"></a><span class="m">#.</span> Elemento 2
+<a id="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-3" name="rest_code_60c8c15e75fe489b9b047ba8c2fd8497-3" href="#rest_code_60c8c15e75fe489b9b047ba8c2fd8497-3"></a><span class="m">#.</span> Elemento 3
+</pre></div>
+<p><strong>Resultado</strong></p>
+<ol class="arabic simple">
+<li><p>Elemento 1</p></li>
+<li><p>Elemento 2</p></li>
+<li><p>Elemento 3</p></li>
+</ol></section></section><section id="titulos-o-encabezados"><h2><a class="toc-backref" href="#toc-entry-8" role="doc-backlink">Títulos o encabezados</a></h2>
+<p>Los encabezados se crean subrayando el texto del encabezado con algún caracter,
+este subrayado debe ser al menos tan largo como el texto.</p>
+<p>La jerarquía de encabezados es dada por el orden, no por los caracteres.
+Podemos seguir  la <a class="reference external" href="https://devguide.python.org/documenting/#style-guide">guía de estilo de documentación de Python</a>
+que sigue esta convención para los títulos de encabezados.</p>
+<ul class="simple">
+<li><p>Subrayar con <strong>``#``</strong>, para encabezado de partes.</p></li>
+<li><p>Subrayar con <strong>``*``</strong>, para encabezado de capítulos.</p></li>
+<li><p>Subrayar con <strong>``=``</strong>, para encabezado de secciones (Título 1).</p></li>
+<li><p>Subrayar con <strong>``-``</strong>, para encabezado de sub secciones (Título 2).</p></li>
+<li><p>Subrayar con <strong>``^``</strong>, para encabezado de sub sub secciones (Título 3).</p></li>
+<li><p>subrayar con <strong>``"``</strong>, para los párrafos.</p></li>
+</ul>
+<p>Aquí la sintaxis de ejemplo:</p>
+<div class="code"><pre class="code rst"><a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-1" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-1" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-1"></a><span class="gh">#####################</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-2" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-2" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-2"></a><span class="gh">Título del documento</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-3" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-3" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-3"></a><span class="gh">#####################</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-4" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-4" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-4"></a>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-5" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-5" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-5"></a><span class="gh">Título de un capítulo</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-6" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-6" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-6"></a><span class="gh">*********************</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-7" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-7" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-7"></a>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-8" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-8" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-8"></a><span class="gh">Título de una sección (Titulo 1)</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-9" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-9" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-9"></a><span class="gh">================================</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-10" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-10" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-10"></a>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-11" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-11" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-11"></a><span class="gh">Título de una subsección (Titulo 2)</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-12" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-12" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-12"></a><span class="gh">-----------------------------------</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-13" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-13" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-13"></a>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-14" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-14" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-14"></a><span class="gh">Título de una sub-subsección (Titulo 3)</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-15" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-15" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-15"></a><span class="gh">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-16" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-16" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-16"></a>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-17" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-17" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-17"></a><span class="gh">Soy un párrafo</span>
+<a id="rest_code_9970efbec94547ffbe8ebd368b6f773b-18" name="rest_code_9970efbec94547ffbe8ebd368b6f773b-18" href="#rest_code_9970efbec94547ffbe8ebd368b6f773b-18"></a><span class="gh">""""""""""""""</span>
+</pre></div>
+<p><strong>Resultado</strong></p>
+<img alt="/images/guias/rst/rst_encabezados.png" src="../../images/guias/rst/rst_encabezados.png"></section><section id="bloques-de-codigo"><h2><a class="toc-backref" href="#toc-entry-9" role="doc-backlink">Bloques de código</a></h2>
+<p>En los bloques de código puedes agregar y mostrar código de cualquier lenguaje soportado:</p>
+<pre class="literal-block">.. code-block:: python
+
+   import os
+   print('Hellow World!')
+   print(help(os))</pre>
+<p><strong>Resultado</strong></p>
+<div class="code"><pre class="code python"><a id="rest_code_0bc97779bb59411aace0ee20563dbb08-1" name="rest_code_0bc97779bb59411aace0ee20563dbb08-1" href="#rest_code_0bc97779bb59411aace0ee20563dbb08-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="rest_code_0bc97779bb59411aace0ee20563dbb08-2" name="rest_code_0bc97779bb59411aace0ee20563dbb08-2" href="#rest_code_0bc97779bb59411aace0ee20563dbb08-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">'Hellow World!'</span><span class="p">)</span>
+<a id="rest_code_0bc97779bb59411aace0ee20563dbb08-3" name="rest_code_0bc97779bb59411aace0ee20563dbb08-3" href="#rest_code_0bc97779bb59411aace0ee20563dbb08-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">help</span><span class="p">(</span><span class="n">os</span><span class="p">))</span>
+</pre></div>
+</section><section id="imagenes"><h2><a class="toc-backref" href="#toc-entry-10" role="doc-backlink">Imágenes</a></h2>
+<p>Puedes añadir imágenes, usando la siguiente sintaxis:</p>
+<div class="code"><pre class="code rst"><a id="rest_code_1f67a2ac81d14866b17595f00f446f82-1" name="rest_code_1f67a2ac81d14866b17595f00f446f82-1" href="#rest_code_1f67a2ac81d14866b17595f00f446f82-1"></a><span class="p">..</span> <span class="ow">image</span><span class="p">::</span> screenshots/archivo-imagen.png
+<a id="rest_code_1f67a2ac81d14866b17595f00f446f82-2" name="rest_code_1f67a2ac81d14866b17595f00f446f82-2" href="#rest_code_1f67a2ac81d14866b17595f00f446f82-2"></a>   <span class="nc">:height:</span> 100
+<a id="rest_code_1f67a2ac81d14866b17595f00f446f82-3" name="rest_code_1f67a2ac81d14866b17595f00f446f82-3" href="#rest_code_1f67a2ac81d14866b17595f00f446f82-3"></a>   <span class="nc">:width:</span> 200
+<a id="rest_code_1f67a2ac81d14866b17595f00f446f82-4" name="rest_code_1f67a2ac81d14866b17595f00f446f82-4" href="#rest_code_1f67a2ac81d14866b17595f00f446f82-4"></a>   <span class="nc">:alt:</span> alternate text
+</pre></div>
+</section><section id="tablas"><h2><a class="toc-backref" href="#toc-entry-11" role="doc-backlink">Tablas</a></h2>
+<div class="code"><pre class="code rst"><a id="rest_code_b30f9fab813d4ba08627b3da48ddf693-1" name="rest_code_b30f9fab813d4ba08627b3da48ddf693-1" href="#rest_code_b30f9fab813d4ba08627b3da48ddf693-1"></a><span class="p">..</span> <span class="ow">csv-table</span><span class="p">::</span>
+<a id="rest_code_b30f9fab813d4ba08627b3da48ddf693-2" name="rest_code_b30f9fab813d4ba08627b3da48ddf693-2" href="#rest_code_b30f9fab813d4ba08627b3da48ddf693-2"></a>   <span class="nc">:header:</span> "Uno", "Dos", "Tres"
+<a id="rest_code_b30f9fab813d4ba08627b3da48ddf693-3" name="rest_code_b30f9fab813d4ba08627b3da48ddf693-3" href="#rest_code_b30f9fab813d4ba08627b3da48ddf693-3"></a>
+<a id="rest_code_b30f9fab813d4ba08627b3da48ddf693-4" name="rest_code_b30f9fab813d4ba08627b3da48ddf693-4" href="#rest_code_b30f9fab813d4ba08627b3da48ddf693-4"></a>   "Fila uno", "Fila dos", "Fila tres"
+<a id="rest_code_b30f9fab813d4ba08627b3da48ddf693-5" name="rest_code_b30f9fab813d4ba08627b3da48ddf693-5" href="#rest_code_b30f9fab813d4ba08627b3da48ddf693-5"></a>   "Fila uno", "Fila dos", "Fila tres"
+</pre></div>
+<p><strong>Resultado</strong></p>
+<table>
+<thead><tr>
+<th class="head"><p>Uno</p></th>
+<th class="head"><p>Dos</p></th>
+<th class="head"><p>Tres</p></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><p>Fila uno</p></td>
+<td><p>Fila dos</p></td>
+<td><p>Fila tres</p></td>
+</tr>
+<tr>
+<td><p>Fila uno</p></td>
+<td><p>Fila dos</p></td>
+<td><p>Fila tres</p></td>
+</tr>
+</tbody>
+</table></section>
+</div>
+    </div>
+  </div>
+        <!--End of body content-->
+
+        <footer id="footer"><div class="container">
+    <div class="row text-center">
+        <div class="col">
+            <strong>Síguenos y forma parte de nuestra comunidad</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-inline social text-center">
+<li class="list-inline-item"><a href="https://www.facebook.com/pyecuador/"><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item">
+<a href="https://www.meetup.com/es-ES/python-ecuador/"><i class="fa fa-meetup"></i></a>
+                </li>
+<li class="list-inline-item"><a href="https://github.com/PythonEcuador"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://t.me/pythonecuador"><i class="fa fa-telegram"></i></a></li>
+                <li class="list-inline-item"><a href="https://twitter.com/pyecuador"><i class="fa fa-twitter"></i></a></li>
+            </ul>
+</div>
+        
+    </div>
+    <div class="row text-center">
+        <div class="col">
+            <p>Comunidad Python Ecuador</p>
+            <small>© 2025 Todos los derechos reservados.</small>
+            <br><small>
+                ¿Encontraste un error?
+                <a href="https://python.ec/guias/colaborar/#reportando-errores-bugs">¡Repórtalo!</a>
+            </small>
+            <br><small>
+                commit:
+                <a href="https://github.com/pythonecuador/pythonecuador.github.io/commit/18a00072">18a00072</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+            
+        </footer>
+</div>
+</div>
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>
